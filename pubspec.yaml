@@ -1,5 +1,5 @@
 name: query_stream
-description: "A new Flutter package project."
+description: "A Flutter package for managing and executing queries via streams."
 version: 0.0.1
 homepage:
 
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:
