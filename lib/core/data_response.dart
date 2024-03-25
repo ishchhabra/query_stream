@@ -3,7 +3,6 @@ class DataResponse<T> {
   final bool isFetching;
   final bool isLoading;
   final T? data;
-  final String? error;
   final DateTime timestamp;
 
   /// Creates a [DataResponse] instance.
@@ -11,7 +10,6 @@ class DataResponse<T> {
     required this.isFetching,
     required this.isLoading,
     required this.data,
-    required this.error,
     required this.timestamp,
   });
 
@@ -20,7 +18,6 @@ class DataResponse<T> {
         isFetching: true,
         isLoading: true,
         data: null,
-        error: null,
         timestamp: DateTime.now(),
       );
 
@@ -33,7 +30,6 @@ class DataResponse<T> {
         isFetching: true,
         isLoading: false,
         data: data,
-        error: null,
         timestamp: DateTime.now(),
       );
 
@@ -42,7 +38,6 @@ class DataResponse<T> {
         isFetching: false,
         isLoading: false,
         data: data,
-        error: null,
         timestamp: DateTime.now(),
       );
 }
