@@ -6,19 +6,17 @@ class DataResponse<T> {
   final DateTime timestamp;
 
   /// Creates a [DataResponse] instance.
-  const DataResponse({
+  DataResponse({
     required this.isFetching,
     required this.isLoading,
     required this.data,
-    required this.timestamp,
-  });
+  }) : timestamp = DateTime.now();
 
   /// Creates a [DataResponse] instance indicating loading.
   factory DataResponse.loading() => DataResponse(
         isFetching: true,
         isLoading: true,
         data: null,
-        timestamp: DateTime.now(),
       );
 
   /// Creates a [DataResponse] instance indicating fetching.
@@ -30,7 +28,6 @@ class DataResponse<T> {
         isFetching: true,
         isLoading: false,
         data: data,
-        timestamp: DateTime.now(),
       );
 
   /// Creates a [DataResponse] instance with data.
@@ -38,6 +35,5 @@ class DataResponse<T> {
         isFetching: false,
         isLoading: false,
         data: data,
-        timestamp: DateTime.now(),
       );
 }
