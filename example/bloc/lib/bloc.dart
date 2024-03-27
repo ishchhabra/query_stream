@@ -19,19 +19,22 @@ class ExampleBloc extends Bloc<ExampleBlocEvent, ExampleBlocState> {
   ) async {
     emit(ExampleBlocLoadInProgress());
     await _exampleRepository.queryStream.executeQuery();
-    await emit.forEach(_exampleRepository.queryStream.stream,
-        onData: (DataResponse<int> dataResponse) {
-      if (dataResponse.isFetching == true) {
-        return ExampleBlocLoadInProgress();
-      }
+    await emit.forEach(
+      _exampleRepository.queryStream.stream,
+      onData: (DataResponse<int> dataResponse) {
+        if (dataResponse.isFetching == true) {
+          return ExampleBlocLoadInProgress();
+        }
 
-      if (dataResponse.data != null) {
-        return ExampleBlocLoadSuccess(data: dataResponse.data!);
-      }
+        if (dataResponse.data != null) {
+          return ExampleBlocLoadSuccess(data: dataResponse.data!);
+        }
 
-      return ExampleBlocFailure();
-    }, onError: (error, stackTrace) {
-      return ExampleBlocFailure();
-    });
+        return ExampleBlocFailure();
+      },
+      onError: (error, stackTrace) {
+        return ExampleBlocFailure();
+      },
+    );
   }
 }

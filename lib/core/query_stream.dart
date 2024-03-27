@@ -71,7 +71,9 @@ class QueryStream<T> {
     if (this.queryStreamOptions.executeOnStale) {
       this._streamController.onListen = () {
         _autoExecuteTimer = Timer.periodic(
-            this.queryStreamOptions.staleTime, (timer) => executeQuery());
+          this.queryStreamOptions.staleTime,
+          (timer) => executeQuery(),
+        );
       };
 
       this._streamController.onCancel = () {
